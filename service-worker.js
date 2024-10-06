@@ -1,18 +1,18 @@
 const CACHE_NAME = 'toko-baju-jesika-cache-v1';
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/about.html',
-  '/contact.html',
-  '/style.css',
-  '/logo.png',
-  '/about.jpg',
-  '/contact.jpg',
-  '/offline.html',
-  '/service-worker.js',
-  '/toko baju jesika.html',
-  '/whatsapp-icon.png',
-  '/banner.jpg',
+  '/TugasDesainWEB-FINAL/index.html',
+  '/TugasDesainWEB-FINAL/about.html',
+  '/TugasDesainWEB-FINAL/contact.html',
+  '/TugasDesainWEB-FINAL/style.css',
+  '/TugasDesainWEB-FINAL/logo.png',
+  '/TugasDesainWEB-FINAL/about.jpg',
+  '/TugasDesainWEB-FINAL/contact.jpg',
+  '/TugasDesainWEB-FINAL/offline.html',
+  '/TugasDesainWEB-FINAL/service-worker.js',
+  '/TugasDesainWEB-FINAL/toko baju jesika.html',
+  '/TugasDesainWEB-FINAL/whatsapp-icon.png',
+  '/TugasDesainWEB-FINAL/banner.jpg',
 ];
 
 self.addEventListener('install', (event) => {
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
       fetch(event.request).catch(() => {
           // Jika fetch gagal, kembalikan offline.html
-          return caches.match('/offline.html');
+          return caches.match('/TugasDesainWEB-FINAL/offline.html');
       })
   );
 });
