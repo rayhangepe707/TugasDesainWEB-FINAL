@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Toko Baju Jesika</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo Toko Baju" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="contact.html">Kontak Kami</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <button class="add-button">Install App</button>
+        <section class="hero">
+            <img src="banner.jpg" alt="Banner Toko Baju">
+            <h1>Selamat Datang di Toko Baju Jesika</h1>
+            <p>Temukan koleksi baju terbaru dengan desain modern. Diskon spesial menanti Anda!</p>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h2>Koleksi Terbaru</h2>
+                <p>Jangan lewatkan koleksi terbaru kami dengan desain yang elegan dan nyaman.</p>
+            </div>
+            <div class="feature">
+                <h2>Diskon Menarik</h2>
+                <p>Dapatkan diskon hingga 50% untuk produk pilihan.</p>
+            </div>
+            <div class="feature">
+                <h2>Kualitas Terjamin</h2>
+                <p>Produk kami terbuat dari bahan berkualitas tinggi untuk kenyamanan Anda.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Toko Baju Jesika. Semua hak dilindungi.</p>
+    </footer>
+
+
+</body><script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+        });
+    }
+</script>
+
+<!-- Add to Home Screen Feature -->
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        let deferredPrompt;
+        const addBtn = document.querySelector('.add-button');
+        if (addBtn) {
+            addBtn.style.display = 'none'; 
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (addBtn) {
+                addBtn.style.display = 'block'; 
+            }
+
+            addBtn.addEventListener('click', () => {
+                addBtn.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    });
+</script>
+
+</html>
